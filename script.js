@@ -5,8 +5,6 @@ function getComputerChoice(){
       return options[choice];
 }
 
-getComputerChoice();
-
 function playRound(playerSelection, computerSelection) {
       if(playerSelection.toUpperCase() === computerSelection.toUpperCase()){
             return "Tie!";
@@ -22,10 +20,17 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "PAPER") || 
             (playerSelection.toUpperCase() === "SCISSOR" && computerSelection.toUpperCase() === "ROCK") ||
             (playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "SCISSOR")){
-            let message = `${computerSelection} beats ${playerSelection}. You lost!`
+            let message = `${playerSelection} loses to ${computerSelection}. You lost!`
             return message;
       }
 }    
-    const playerSelection = "rock";
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+
+function game(){
+      for(let i=0; i<5; i++){
+            let playerSelection = prompt("Choose rock, paper or scissor.");
+            const computerSelection = getComputerChoice();
+            console.log(playRound(playerSelection, computerSelection));
+      }
+}
+
+game();
