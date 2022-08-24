@@ -26,7 +26,8 @@ function playRound(playerSelection, computerSelection) {
 }    
 
 function game(){
-      for(let i=0; i<5; i++){
+      let roundLength = prompt("Choose the number of rounds.");
+      for(let i=0; i<roundLength; i++){
             let playerSelection = prompt("Choose rock, paper or scissor.");
             const computerSelection = getComputerChoice();
             console.log(playRound(playerSelection, computerSelection));
