@@ -8,7 +8,6 @@ function getComputerChoice(){
 }
 
 function getSelection(e) {
-
     // get computer selection
     let computerSelection = getComputerChoice();
 
@@ -24,13 +23,14 @@ function getSelection(e) {
     }
 
     playRound(playerSelection, computerSelection);
+    return;
 }    
 
 function playRound(playerSelection, computerSelection){
 
     // find the winner
     if(playerSelection.toUpperCase() === computerSelection.toUpperCase()){
-        console.log("Tie!");
+        message.textContent = `It's a Tie! Score: ${playerPoints}:${computerPoints}`;
         return;
       }
 
@@ -41,20 +41,18 @@ function playRound(playerSelection, computerSelection){
         (playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK")){
         
         playerPoints = playerPoints + 1;
-        let message =  `${playerSelection} beats ${computerSelection}. You won! Score: ${playerPoints}:${computerPoints}`
-        console.log(message);
+        message.textContent =  `${playerSelection} beats ${computerSelection}. You won! Score: ${playerPoints}:${computerPoints}`;
         return;
     }
 
     // losing
     else{
         computerPoints = computerPoints + 1;
-        let message = `${playerSelection} loses to ${computerSelection}. You lost! Score: ${playerPoints}:${computerPoints}`
-        console.log(message);
+        message.textContent =  `${playerSelection} loses to ${computerSelection}. You lost! Score: ${playerPoints}:${computerPoints}`;
         return;
     }
 }
-
+const message = document.querySelector('.message');
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', getSelection)
