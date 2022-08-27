@@ -27,7 +27,6 @@ function getSelection(e) {
 }    
 
 function playRound(playerSelection, computerSelection){
-
     // find the winner
     if(playerSelection.toUpperCase() === computerSelection.toUpperCase()){
         message.textContent = `It's a Tie! Score: ${playerPoints}:${computerPoints}`;
@@ -41,15 +40,23 @@ function playRound(playerSelection, computerSelection){
         (playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK")){
         
         playerPoints = playerPoints + 1;
-        message.textContent =  `${playerSelection} beats ${computerSelection}. You won! Score: ${playerPoints}:${computerPoints}`;
-        return;
+        if (playerPoints === 5){
+            message.textContent = `You won the game!`;
+        }else{
+            message.textContent =  `${playerSelection} beats ${computerSelection}. Score: ${playerPoints}:${computerPoints}`;
+            return;
+        }
     }
-
     // losing
     else{
         computerPoints = computerPoints + 1;
-        message.textContent =  `${playerSelection} loses to ${computerSelection}. You lost! Score: ${playerPoints}:${computerPoints}`;
-        return;
+        if(computerPoints === 5){
+            message.textContent = `You lost the game!`;
+        }else{
+            message.textContent =  `${playerSelection} loses to ${computerSelection}. Score: ${playerPoints}:${computerPoints}`;
+            return;
+        }
+       
     }
 }
 const message = document.querySelector('.message');
