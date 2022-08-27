@@ -1,6 +1,18 @@
 let options = ["rock", "paper", "scissor"];
 let playerPoints = 0;
 let computerPoints = 0;
+let welcomeText = 'Rock Paper Scissor'
+let i = 0;
+
+
+function typeWriter() {
+    if (i < welcomeText.length) {
+      document.querySelector(".welcome").innerHTML += welcomeText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 110);
+    }
+    return;
+}
 
 function getComputerChoice(){
       let choice = Math.floor(Math.random()*options.length);
@@ -13,13 +25,13 @@ function getSelection(e) {
 
     // get player selection
     if(e.target.classList.contains("rock")){
-        playerSelection = "ROCK";
+        playerSelection = "Rock";
         }
     else if(e.target.classList.contains("paper")){
-        playerSelection = "PAPER";
+        playerSelection = "Paper";
         }
     else{
-        playerSelection = "SCISSOR";
+        playerSelection = "Scissor";
     }
 
     playRound(playerSelection, computerSelection);
@@ -29,7 +41,9 @@ function getSelection(e) {
 function playRound(playerSelection, computerSelection){
     // find the winner
     if(playerSelection.toUpperCase() === computerSelection.toUpperCase()){
-        message.textContent = `It's a Tie! Score: ${playerPoints}:${computerPoints}`;
+        message.textContent = `Tie!`;
+        score.textContent = `${playerPoints}:${computerPoints}`;
+
         return;
       }
 
@@ -41,9 +55,11 @@ function playRound(playerSelection, computerSelection){
         
         playerPoints = playerPoints + 1;
         if (playerPoints === 5){
+            score.textContent = `${playerPoints}:${computerPoints}`;
             message.textContent = `You won the game!`;
         }else{
-            message.textContent =  `${playerSelection} beats ${computerSelection}. Score: ${playerPoints}:${computerPoints}`;
+            message.textContent =  `${playerSelection} beats ${computerSelection}`
+            score.textContent = `${playerPoints}:${computerPoints}`;
             return;
         }
     }
@@ -51,16 +67,22 @@ function playRound(playerSelection, computerSelection){
     else{
         computerPoints = computerPoints + 1;
         if(computerPoints === 5){
+            score.textContent = `${playerPoints}:${computerPoints}`;
             message.textContent = `You lost the game!`;
         }else{
-            message.textContent =  `${playerSelection} loses to ${computerSelection}. Score: ${playerPoints}:${computerPoints}`;
+            message.textContent =  `${playerSelection} loses to ${computerSelection}`;
+            score.textContent = `${playerPoints}:${computerPoints}`;
             return;
         }
        
     }
 }
+const score = document.querySelector('.score');
 const message = document.querySelector('.message');
 const buttons = document.querySelectorAll('button');
+window.onload = function(){
+    typeWriter();
+};
 buttons.forEach((button) => {
     button.addEventListener('click', getSelection)
 });
