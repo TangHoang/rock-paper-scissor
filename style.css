@@ -1,0 +1,48 @@
+*{
+    font: helvetica, arial, sans-serif;
+    margin: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+div{
+    width: 100vw;
+    text-align: center;
+}
+
+.button-container{
+    height: 30vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.button-container button{
+    height: 30%;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 25px;
+    width: 10%;
+}
+
+.welcome{
+    height: 20vh;
+    line-height: 20vh;
+    text-align: center;
+}
+
+.score{
+    height: 30vh;
+}
+
+.message{
+    height: 10vh;
+}
