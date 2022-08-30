@@ -2,7 +2,13 @@ let options = ["rock", "paper", "scissors"];
 let playerPoints = 0;
 let computerPoints = 0;
 let welcomeMessage = 'ROCK  PAPER  SCISSORS'
+let winningMessage = "You won the game!";
+let losingMessage = "You lost the game!";
+let classTitle = ".welcome";
+let classEnding = ".win-lose";
 let i = 0;
+let j = 0;
+let k = 0;
 
 const score = document.querySelector('.score');
 const text = document.querySelector('.text');
@@ -11,6 +17,10 @@ const computerScore = document.querySelector('.computer-score');
 const buttons = document.querySelectorAll('button');
 const doppelpunkt = document.querySelector(".doppelpunkt");
 const main = document.getElementById("main");
+const endMessage = document.querySelector(".win-lose");
+const retry = document.querySelector(".retry");
+const welcome = document.querySelector(".welcome"); 
+const retryButton = document.querySelector("retry-button");
 
 buttons.forEach((button) => {
     button.addEventListener('click', getSelection)
@@ -21,14 +31,30 @@ buttons.forEach((button) => {
 text.addEventListener('transitionend', removeTransition);
 
 window.onload = function(){
-    typeWriter();
+    typeWriterTitle();
     setTimeout(showMain, 3000);
 };
-function typeWriter() {
+function typeWriterTitle() {
     if (i < welcomeMessage.length) {
         document.querySelector(".welcome").innerHTML += welcomeMessage.charAt(i);
         i++;
-        setTimeout(typeWriter, 100);
+        setTimeout(typeWriterTitle, 100);
+    }
+    return;
+}
+function typeWriterWin(){
+    if (j < winningMessage.length) {
+        document.getElementById("gameMessage").innerHTML += winningMessage.charAt(j);
+        j++;
+        setTimeout(typeWriterWin, 60);
+    }
+    return;
+}
+function typeWriterLose(){
+    if (k < losingMessage.length) {
+        document.getElementById("gameMessage").innerHTML += losingMessage.charAt(k);
+        k++;
+        setTimeout(typeWriterLose, 60);
     }
     return;
 }
@@ -73,6 +99,19 @@ function removeTransition(e){
     doppelpunkt.classList.remove("tie");
     computerScore.classList.remove("tie");
 }
+function gameEnd(result){
+    main.classList.add("invisible");
+    retry.classList.add("show");
+    welcome.classList.add("invisible");
+
+    if(result == "win"){
+        typeWriterWin();
+    }else{
+        typeWriterLose();
+    }
+    
+    
+}
 function playRound(playerSelection, computerSelection){
     // find the winner
     if(playerSelection.toUpperCase() === computerSelection.toUpperCase()){
@@ -91,7 +130,7 @@ function playRound(playerSelection, computerSelection){
         playerPoints = playerPoints + 1;
         if (playerPoints === 5){
             playerScore.textContent = `${playerPoints}`;
-            text.textContent = `You won the game!`;
+            gameEnd("win");
         }else{
             playerScore.textContent = `${playerPoints}`;
             return;
@@ -102,7 +141,7 @@ function playRound(playerSelection, computerSelection){
         computerPoints = computerPoints + 1;
         if(computerPoints === 5){
             computerScore.textContent = `${computerPoints}`;
-            text.textContent = `You lost the game!`;
+            gameEnd("lose");
         }else{
             computerScore.textContent = `${computerPoints}`;
             return;
@@ -110,5 +149,3 @@ function playRound(playerSelection, computerSelection){
        
     }
 }
-
-

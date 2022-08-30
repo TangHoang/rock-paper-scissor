@@ -27,7 +27,7 @@ div{
     align-content: center;
 }
 
-.button-container button{
+.btn{
     height: 30%;
     width: 10%;
     margin-left: 1%;
@@ -97,21 +97,65 @@ div{
 
 .retry{
     display: none;
+    width: 100vw;
+    height: 90vh;
+    margin-top: -70vh;
+
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
+.win-lose{
+    height: 10%;
+    width: 100vw;
+    font-size: 5vmin;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
 
+.retry-button{
+    height: 10%;
+    width: 10%;
+    font-size: 1vw;
+    border: .3rem solid black;
+    border-radius: 1.5rem;
+    transition: all .1s ease;
+    text-align: center;
+    color: #f1f1f1;
+    background: #111;
+    text-shadow: 0 0 0.5rem black;
+}
 
 .game{
     display:none;
 }
 
+.show{
+    display: flex;
+}
+
 .visible{
     display: block;
     animation-name: FadeIn;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-timing-function: linear;
-
 }
+
+.invisible{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 0.5s linear;
+}
+@keyframes FadeOut{
+    0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+}
+
 
 @keyframes FadeIn {
     0% {
@@ -121,5 +165,3 @@ div{
       opacity: 1;
     }
   }
-
-
