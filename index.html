@@ -8,21 +8,28 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div class="welcome"></div>
-
-    <div class="score">
-        <div class="player-score center ">0</div>
-        <div class="doppelpunkt center">:</div>
-        <div class="computer-score center">0</div>
+    <header>
+        <div class="welcome"></div>
+    </header>
+    <div id="main" class="game">
+        <div class="score">
+            <div class="player-score center ">0</div>
+            <div class="doppelpunkt center">:</div>
+            <div class="computer-score center">0</div>
+        </div>
+        <div class="message">
+            <div class="text"></div>
+        </div>
+    
+        <div class="button-container">
+            <button id='rock' class="btn rock">ROCK</button>
+            <button id='paper' class="btn paper">PAPER</button>
+            <button id='scissors' class="btn scissors">SCISSORS</button>
+        </div>
     </div>
-    <div class="message">
-        <div class="text"></div>
-    </div>
-
-    <div class="button-container">
-        <button id='rock' class="btn rock">ROCK</button>
-        <button id='paper' class="btn paper">PAPER</button>
-        <button id='scissors' class="btn scissors">SCISSORS</button>
+    <div class="retry">
+        <div class="win-lose"></div>
+        <button class="retry-button"></button>
     </div>
     
     <script src="script.js"></script>

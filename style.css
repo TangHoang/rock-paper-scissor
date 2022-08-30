@@ -88,6 +88,38 @@ div{
 
 .center{
     width: 6vw;
+    transition: 0.1s ease;
 }
+
+.tie{
+    transform: scale(1.1);
+}
+
+.retry{
+    display: none;
+}
+
+
+
+.game{
+    display:none;
+}
+
+.visible{
+    display: block;
+    animation-name: FadeIn;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+
+}
+
+@keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
 
